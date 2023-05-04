@@ -1,0 +1,39 @@
+services:
+  frontend:
+    container_name: frontend_dev
+    image: poc_rtb_fe_dev
+    build:
+      context: frontend
+      dockerfile: ../frontend.Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+    ports:
+      - 5000:3000
+
+  backend:
+    container_name: backend_dev
+    image: eclipse-temurin:17-jdk-alpine
+    volumes:
+      - ./backend:/mvn
+    ports:
+      - 5002:8080
+    working_dir: /mvn
+    command: ./mvnw spring-boot:run
+    environment:
+      M2_HOME: /mvn/.mvn/m2
+
+  database:
+    container_name: postgres
+    image: postgres:14.6
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: testdb
+    volumes:
+      - /var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5001:8080
