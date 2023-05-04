@@ -18,9 +18,9 @@ jobs:
         working-directory: ./frontend
         run: npm run test:coverage
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: coverallsapp/github-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          github-token: awNWweFZlJkULhugYT2lDIyI0GMemB7JT
   java:
     runs-on: ubuntu-latest
     steps:
@@ -38,6 +38,6 @@ jobs:
         working-directory: ./backend
         run: mvn -B test jacoco:report
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: coverallsapp/github-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          github-token: awNWweFZlJkULhugYT2lDIyI0GMemB7JT
