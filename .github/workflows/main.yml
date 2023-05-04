@@ -15,6 +15,6 @@ jobs:
         run: npm install
       - name: Run tests and collect coverage
         working-directory: ./frontend
-        run: npm run test
+        run: npm run test:coverage
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
