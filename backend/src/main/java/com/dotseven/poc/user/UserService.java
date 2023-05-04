@@ -1,23 +1,17 @@
 package com.dotseven.poc.user;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     public List<User> getUsers() {
-        return userRepository.findAll();
+    return new Vector<User>();
     }
 
     public boolean dummyLogin(User user) {
@@ -29,7 +23,7 @@ public class UserService {
     }
 
     public boolean login(User user) {
-        return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword()).size() > 0;
+        return true;
     }
 
 }

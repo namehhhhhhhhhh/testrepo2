@@ -1,23 +1,10 @@
 package com.dotseven.poc.user;
 
-import jakarta.persistence.*;
 
 import java.util.Objects;
 
-    @Entity
-    @Table(name="users")
     public class User {
 
-        @Id
-        @SequenceGenerator(
-            name="user_sequence",
-            sequenceName="user_sequence",
-            allocationSize = 1
-        )
-        @GeneratedValue(
-                strategy = GenerationType.SEQUENCE,
-                generator="user_sequence"
-        )
         private Long id;
         private String username;
         private String password;
