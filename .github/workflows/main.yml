@@ -37,7 +37,9 @@ jobs:
         continue-on-error: true
         working-directory: ./backend
         run: mvn -B test jacoco:report
-      - name: Upload coverage to Codecov
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: awNWweFZlJkULhugYT2lDIyI0GMemB7JT
+      - name: Coveralls push (mvn)
+        working-directory: ./backend
+        run: mvn coveralls:report --define repoToken=awNWweFZlJkULhugYT2lDIyI0GMemB7JT
+
+      - name: Codecov push (action)
+        uses: codecov/codecov-action@v3
